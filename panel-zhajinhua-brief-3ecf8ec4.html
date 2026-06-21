@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>信息卡片 · 炸金花</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #f7f7f6;
+      color: #1e1e1c;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    .page {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 3.2rem 1.5rem 4rem;
+    }
+
+    /* 主视觉 */
+    .hero {
+      margin-bottom: 3.5rem;
+      text-align: left;
+    }
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 0.8rem;
+    }
+    .hero h1 i {
+      font-style: normal;
+      background: #eae8e3;
+      padding: 0 0.3em;
+      border-radius: 4px;
+    }
+    .hero p {
+      font-size: 1rem;
+      color: #5b5b58;
+      max-width: 540px;
+      margin-top: 0.6rem;
+    }
+
+    /* 通用卡片 */
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.8rem 1.8rem;
+      margin-bottom: 2.2rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02), 0 6px 18px rgba(0,0,0,0.03);
+    }
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      margin-bottom: 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid #eae8e3;
+    }
+    .card-content {
+      font-size: 0.95rem;
+      color: #2b2b29;
+    }
+    .card-content p {
+      margin-bottom: 0.75rem;
+    }
+    .card-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 双列卡片（响应式） */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .grid-2 .card {
+      margin-bottom: 0;
+    }
+
+    /* 适合人群列表 */
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.5rem;
+      margin-top: 0.5rem;
+    }
+    .tag {
+      background: #f0efeb;
+      padding: 0.2rem 0.8rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      color: #3b3b38;
+      letter-spacing: 0.02em;
+    }
+
+    /* 内链段落（自然嵌入） */
+    .embed-link {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.6rem 1.8rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02), 0 6px 18px rgba(0,0,0,0.03);
+      font-size: 0.95rem;
+      color: #2b2b29;
+    }
+    .embed-link a {
+      color: #1e3c5c;
+      text-decoration: none;
+      border-bottom: 1px solid #cbd5e1;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .embed-link a:hover {
+      border-bottom-color: #1e3c5c;
+      color: #0b1d31;
+    }
+
+    /* 小提示 */
+    .note {
+      background: #f2f1ee;
+      border-radius: 20px;
+      padding: 1.2rem 1.6rem;
+      font-size: 0.88rem;
+      color: #444440;
+    }
+    .note strong {
+      font-weight: 500;
+      color: #1e1e1c;
+    }
+
+    /* FAQ摘要 */
+    .faq-mini {
+      margin-top: 2.8rem;
+      border-top: 1px solid #e0ded9;
+      padding-top: 2rem;
+    }
+    .faq-mini h3 {
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #7b7b77;
+      margin-bottom: 1rem;
+    }
+    .faq-item {
+      margin-bottom: 1rem;
+    }
+    .faq-q {
+      font-weight: 500;
+      margin-bottom: 0.15rem;
+    }
+    .faq-a {
+      color: #5b5b58;
+      font-size: 0.9rem;
+    }
+
+    /* 响应式 */
+    @media (max-width: 520px) {
+      .page {
+        padding: 2rem 1.2rem 3rem;
+      }
+      .hero h1 {
+        font-size: 1.9rem;
+      }
+      .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .card {
+        padding: 1.4rem 1.2rem;
+      }
+      .embed-link {
+        padding: 1.2rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- 主视觉 -->
+    <div class="hero">
+      <h1>一种关于 <i>炸金花</i> 的日常检索</h1>
+      <p>从牌型对照到玩法延伸，这里整理了一份可以反复翻阅的信息卡片集。</p>
+    </div>
+
+    <!-- 用途卡片 x 2 (网格) -->
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">牌型速查</div>
+        <div class="card-content">
+          <p>豹子、同花顺、金花、顺子、对子、散牌…… 按概率排列的简明对照，适合在牌局间隙快速确认大小顺序。</p>
+          <p>每张卡片都附带概率与示例，减少临场争议。</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">规则延伸</div>
+        <div class="card-content">
+          <p>不同地区对“235吃豹子”“喜钱规则”“闷牌上限”的默认约定并不相同。这里汇总了一些常见变体，供开局前协商参考。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 适合人群卡片（横向） -->
+    <div class="card">
+      <div class="card-title">常被哪些人翻开</div>
+      <div class="card-content">
+        <p>不论是周末家庭局、朋友聚会还是线上切磋，会用到这些信息的人通常有一个共同点：希望把规则理得更清楚，让游戏更顺畅。</p>
+        <div class="tag-list">
+          <span class="tag">新手玩家</span>
+          <span class="tag">牌局组织者</span>
+          <span class="tag">规则整理控</span>
+          <span class="tag">概率爱好者</span>
+          <span class="tag">线上玩家</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 自然链接段落（嵌入 '炸金花' 原文） -->
+    <div class="embed-link">
+      <p>如果你需要一份结构更完整的资料页，用来日常查询或转发给牌友，可以看看这个长期维护的页面：<a href="https://panel-zhajinhua.com">炸金花</a>。内容涵盖了基础规则、常见问题与线上工具入口，更新频率不算高，但每次调整都会保留旧版本标注。</p>
+    </div>
+
+    <!-- 小提示卡片 -->
+    <div class="note">
+      <strong>一点说明。</strong> 这里收集的规则细节与牌型数据大多来自玩家社区与通用习惯，不构成任何形式的官方标准。具体玩法以局内约定为准。
+    </div>
+
+    <!-- FAQ 摘要 (3个问题) -->
+    <div class="faq-mini">
+      <h3>常见疑问 · 摘要</h3>
+      <div class="faq-item">
+        <div class="faq-q">⚬ 同花顺和豹子哪个大？</div>
+        <div class="faq-a">多数规则中豹子大于同花顺，但也有少数变体将同花顺视为最大。页面内同时列出了两种主流说法。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">⚬ 235真能吃豹子吗？</div>
+        <div class="faq-a">是的，在常见规则中，不同花色235是唯一可以击败豹子的特殊牌型。但也有部分玩法不采用此规则。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">⚬ 闷牌和看牌有什么区别？</div>
+        <div class="faq-a">闷牌指不看牌直接下注，通常每轮下注额较低；看牌后下注额会增加。具体倍数由局前约定。</div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
